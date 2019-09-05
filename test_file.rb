@@ -41,6 +41,8 @@ data.each { |i|
 end
 
 def show_maternal(person_array)
+
+
     # Finding a value 
     molly = person_array.find { |p|
         p.name == "Molly"
