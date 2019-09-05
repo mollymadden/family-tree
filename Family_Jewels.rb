@@ -54,6 +54,8 @@ def father_menu(person_array)
 
     puts "#{selection}'s father is #{father_name}"
 
+    # puts "Got an exception, but I'm responding intelligently!"
+
     main_menu
 
 end
