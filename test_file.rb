@@ -76,6 +76,3 @@ end
 
 
 main_menu(person_array)
-
-
-
