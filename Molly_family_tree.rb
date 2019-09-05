@@ -3,10 +3,10 @@ require 'colorize'
 require 'tty-tree'
 require 'csv'
 require 'pry'
-require 'google_search_results'
+# require 'google_search_results'
 
 
-# client = GoogleSearchResults.new(q: "coffee", serp_api_key: "secret_api_key" )
+# client = 
 # hash_results = client.get_hash
 
 family_tree = []
@@ -16,6 +16,8 @@ family_tree = []
 
 def you(family_tree)
     gender = ""
+    
+    search_results = ""
 
     puts "Family Tree"
     puts "what is your first name?"
@@ -39,6 +41,7 @@ def you(family_tree)
         date_of_birth: dob,
         birthplace: pob,
         relationship: "self"
+        # search_results: GoogleSearchResults.new(q:"#{you[:date_of_birth][:location]}")
     }
    
     puts "your family tree has been created! begin adding family members"
@@ -82,6 +85,7 @@ def add_person(family_tree)
         date_of_birth: dob,
         birthplace: pob,
         relationship: relationship
+        # search_results: GoogleSearchResults.new(q:"#{person[:date_of_birth][:location]}")
     }
 
     family_tree << person
@@ -101,6 +105,7 @@ def view_person(family_tree)
             puts "Year of Birth: #{person[:date_of_birth]}"
             puts "Place of Birth: #{person[:birthplace]}"
             puts "Relationship: #{person[:relationship]}"
+            # puts "Here's what was happening when and where they were born:#{person[:search_results]}"
 
             # family_tree.each do |person| 
             #     if person[:gender] == "male"
