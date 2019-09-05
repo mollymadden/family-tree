@@ -1,4 +1,5 @@
 require 'tty-prompt'
+require 'colorize'
 
 class Person
     attr_accessor :id, :name, :mat_id, :pat_id
@@ -16,8 +17,8 @@ class Person
 
     @prompt = TTY::Prompt.new
 
-
-def display_all_people
+person_array = []
+def display_all_people(person_array)
 # Read File data into 7 strings
 data = []
 File.open("test_family.csv","r").each { |line|
@@ -25,7 +26,7 @@ File.open("test_family.csv","r").each { |line|
 }
 
 # Split each string data 4 strings, and make a person, and add person to array.
-person_array = []
+
 data.each { |i|
     record =  i.split(",")
     this_person = Person.new(record[0],record[1],record[2],record[3])
@@ -37,16 +38,32 @@ data.each { |i|
     puts p.name
     }
     
-    end
+end
 
-def main_menu
+def show_maternal(person_array)
+    # Finding a value 
+    molly = person_array.find { |p|
+        p.name == "Molly"
+    }
+    
+    # Find another value
+    mat_id = molly.mat_id
+    mollymum = person_array.find { |p|
+        p.id == mat_id
+    }
+    
+    puts mollymum
+end
+
+def main_menu(person_array)
     menu = @prompt.select("Main Menu", 
     ["1. Display all people", "2. Show maternal lineage", "3. Show paternal lineage", "4. Add a relative", "5. Exit"])
 
 case menu
     when "1. Display all people"
-        display_all_people
+        display_all_people(person_array)
     when "2. Show maternal lineage"
+        show_maternal(person_array)
     when "3. Show paternal lineage"
     when "4. Add a relative"
     when "5. Exit"
@@ -56,17 +73,7 @@ end
 
 
 
-main_menu
+main_menu(person_array)
 
-    # # Finding a value 
-    # molly = person_array.find { |p|
-    #     p.name == "Molly"
-    # }
-    
-    # # Find another value
-    # mat_id = molly.mat_id
-    # mollymum = person_array.find { |p|
-    #     p.id == mat_id
-    # }
-    
-    # # puts mollymum
+
+
