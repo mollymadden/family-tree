@@ -1,5 +1,6 @@
 require 'tty-prompt'
 require 'colorize'
+require 'pry'
 
 class Person
     attr_accessor :id, :name, :mat_id, :pat_id
@@ -32,7 +33,7 @@ def load_from_file
         # Read File data into 7 strings
         data = []
         File.open("test_family.csv","r").each { |line|
-            data << line
+            data << line.chomp
         }
 
         person_array = []
@@ -45,80 +46,75 @@ def load_from_file
         person_array
 end
 
-# def example_of_find
-
-
-
-
-# end
-
-# def show_maternal(person_array)
-#     # Finding a value 
-#     molly = person_array.find { |p|
-#         # p.name == "Molly"
-#     }
-    
-#     # Find another value
-#     mat_id = molly.mat_id
-#     mollymum = person_array.find { |p|
-#         # p.id == mat_id
-#     }
-    
-#     # puts mollymum
-# end
-
-def person_menu(person_array)
+def father_menu(person_array)
     menu_array = []
     person_array.each { |p|
         menu_array << p.name
     }
     selection = @prompt.select("Display All", menu_array)
 
+    found_person = person_array.find { |p|
+        p.name == selection
+    }
+
+
+    father = person_array.find { |p|
+        p.id.to_s == found_person.pat_id.to_s
+    }
+
+    father_name = father.name
+    puts "#{selection}'s father is #{father_name}"
+
+end
+
+
+
+
+def mother_menu(person_array)
+    menu_array = []
+    person_array.each { |p|
+        menu_array << p.name
+    }
+    selection = @prompt.select("Display All", menu_array)
     # selection now contains person name "Rhoda"
     # search the person_array for a person with the name Rhoda
     # and then get the mat_id from Rhoda
     # and then search the person_array again for a person with the id == Rhoda's mat_id.
     person_array = load_from_file
-
     found_person = person_array.find { |p|
         p.name == selection
     }
-
     # selection = search_name 
-
     found_person_id = found_person.id
     found_person_mat_id = found_person.mat_id
-    found_person_name = found_person.name
-
-    puts "#{selection}'s mother was #{found_person.name}"
+    # found_person_name = found_person.name
+    person_array = load_from_file
+    mother = person_array.find { |p|
+        p.id == found_person.mat_id
+    }
+    mother_name = mother.name
+    puts "#{selection}'s mother is #{mother_name}"
 
 end
 
 def main_menu()
     menu = @prompt.select("Main Menu", 
-    ["1. Display all people", "2. Show maternal lineage", "3. Show paternal lineage", "4. Add a relative", "5. Exit"])
+    ["1. Display all people", "2. Show maternal lineage", "3. Show paternal lineage", "4. Exit"])
 
     case menu
         when "1. Display all people"
             display_all_people(load_from_file)
         when "2. Show maternal lineage"
-            person_menu(load_from_file)
+            mother_menu(load_from_file)
         when "3. Show paternal lineage"
-        when "4. Add a relative"
-        when "5. Exit"
+            father_menu(load_from_file)
+        when "4. Exit"
             system 'clear'
     end
 end
 
+main_menu
 
-# loop do
-main_menu()
-# end
-
-
-# def person_menu(person_array)
-#     person_menu = @prompt.select("Display All", person_array)
-# end
 
 
 
