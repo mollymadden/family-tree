@@ -32,7 +32,7 @@ end
 def load_from_file
         # Read File data into 7 strings
         data = []
-        File.open("test_family.csv","r").each { |line|
+        File.open(ARGV[0],"r").each { |line|
             data << line.chomp
         }
 
