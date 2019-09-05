@@ -1,4 +1,4 @@
-#H2 Help Instructions
+<h2>Help Instructions</h2>
 
 in order to run the file you will need the following gem
 > 'tty-prompt'
@@ -18,12 +18,12 @@ Mat_id and pat_id stand for “maternal id” and “paternal id” respectively
 
 By way of example, please see below.
 
-ID,name,mat_id,pat_id
--1,Jimmy,2,3
--2,Tina,4,5
--3,John,0,0
--4,Kylie,0,0
--5,Gotye,0,0
+ID,name,mat_id,pat_id<ul>
+- 1,Jimmy,2,3
+- 2,Tina,4,5
+- 3,John,0,0
+- 4,Kylie,0,0
+- 5,Gotye,0,0</ul>
 
 In this example, Jimmy is the son of Tina and John. Tina is the daughter of Kylie and Gotye. John, Kylie, and Gotye’s parents are unknown.
 
