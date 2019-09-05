@@ -81,7 +81,7 @@ def person_menu(person_array)
     person_array = load_from_file
 
     found_person = person_array.find { |p|
-        p.name == search_name
+        p.name == selection
     }
 
     # selection = search_name 
@@ -90,7 +90,7 @@ def person_menu(person_array)
     found_person_mat_id = found_person.mat_id
     found_person_name = found_person.name
 
-    puts "#{search_name}'s mother was #{found_person.name}"
+    puts "#{selection}'s mother was #{found_person.name}"
 
 end
 
