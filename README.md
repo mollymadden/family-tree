@@ -1,3 +1,5 @@
+#H2 Help Instructions
+
 in order to run the file you will need the following gem
 > 'tty-prompt'
 
@@ -17,11 +19,11 @@ Mat_id and pat_id stand for “maternal id” and “paternal id” respectively
 By way of example, please see below.
 
 ID,name,mat_id,pat_id
-1,Jimmy,2,3
-2,Tina,4,5
-3,John,0,0
-4,Kylie,0,0
-5,Gotye,0,0
+-1,Jimmy,2,3
+-2,Tina,4,5
+-3,John,0,0
+-4,Kylie,0,0
+-5,Gotye,0,0
 
 In this example, Jimmy is the son of Tina and John. Tina is the daughter of Kylie and Gotye. John, Kylie, and Gotye’s parents are unknown.
 
@@ -32,8 +34,8 @@ In order to link the CSV file to the family_tree.rb tool, you must use the ARGV 
 ruby family_tree.rb “people.csv”
 
 the tool has the following functions:
-•	view all people by NAME within your CSV file.
-•	Choose whether you would like to view a person’s maternal or paternal lineage
-•	View lineage
-•	Choose again
-•	Exit
+- view all people by NAME within your CSV file.
+- Choose whether you would like to view a person’s maternal or paternal lineage
+- View lineage
+- Choose again
+- Exit
